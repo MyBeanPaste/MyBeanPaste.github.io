@@ -85,7 +85,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/11/27/python/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="数据类型1.Number类型  int整型、Float 浮点型、Bool布尔型、Complex复数型   2.String字符串类型 字符串类型就是文字类型，声明一个字符串类型有三种方式： 单引号：内容中包含大量双引号时，适合使用单引号声明字符串 双引号：内容中包含大量单引号时，适合使用双引号声明字符串 三引号：内容中同时包含单双引号，适合使用三引号声明字符串   3.List列表类型  变量 =">
-<meta property="og:updated_time" content="2017-11-27T13:57:33.000Z">
+<meta property="og:updated_time" content="2017-11-27T14:59:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python基础学习笔记">
 <meta name="twitter:description" content="数据类型1.Number类型  int整型、Float 浮点型、Bool布尔型、Complex复数型   2.String字符串类型 字符串类型就是文字类型，声明一个字符串类型有三种方式： 单引号：内容中包含大量双引号时，适合使用单引号声明字符串 双引号：内容中包含大量单引号时，适合使用双引号声明字符串 三引号：内容中同时包含单双引号，适合使用三引号声明字符串   3.List列表类型  变量 =">
@@ -433,6 +433,89 @@ isinstance() 检测一个数据是否由指定的类型创建
     格式：isinstance(变量，检测的类型)
 </pre>
 
+<h2 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h2><h3 id="1-顺序结构"><a href="#1-顺序结构" class="headerlink" title="1.顺序结构"></a>1.顺序结构</h3><pre>
+顺序结构就是代码一种自上而下执行的结构，python的默认流程
+</pre>
+
+<h3 id="2-分支-选择-结构"><a href="#2-分支-选择-结构" class="headerlink" title="2.分支(选择)结构"></a>2.分支(选择)结构</h3><pre>
+分支结构一共分为4类，分别是 单项分支、双项分支、多项分支、巢状分支
+1.  单分支
+    格式：
+        if  1 < 4:
+            print('True')
+2. 双项分支
+    格式：
+        if  1 < 5:
+            print('True')
+        else:
+            print('False')
+3.多项分支
+    格式：
+        if 1 > 5:
+            pass
+        elif 条件:
+            pass
+        else:
+            pass
+4.巢状分支
+    if 条件：
+        pass
+        if 条件：
+            pass
+    else：
+        pass        
+</pre>
+
+<h3 id="3-循环结构"><a href="#3-循环结构" class="headerlink" title="3.循环结构"></a>3.循环结构</h3><pre>
+Python中循环结构分为两类，分别是while和for.....in
+1.while
+    格式1:(死循环)
+        a=1,b=3
+        while a < b:
+            print('1111111')
+            a += 1    
+    格式2:
+        a，b = 3，5
+        while a < b:
+            print('111111)
+            a += 1
+        else:
+            print('1111111')
+2.for .... in
+    for 变量 in 容器：用于遍历容器类的数据(字符串，列表，元组，字典，集合)
+    格式1:
+        user_list = ['小明','小红','小强','小军']
+        for val in user_list:
+             print(val)
+    格式2:
+        data = ('a','alibaba'),('b','baidu'),('c','changhong')
+        for k,v in data:
+            print(k,'======>',v)
+    使用格式2需注意以下几种格式遍历容器
+    [(),(),()]    列表中有元组
+    [[],[],[]]    列表中有列表
+    ((),(),())     元组中有元组
+    {(),(),()}    集合中有元组
+    格式3:
+        data = ('a','b','c','d')
+        for v in data:
+            print(v)
+        else:
+            print('11111111') 
+    循环结束时执行else区间代码
+</pre>
+
+<h3 id="4-流程控制语句"><a href="#4-流程控制语句" class="headerlink" title="4.流程控制语句"></a>4.流程控制语句</h3><pre>
+    1.break
+    作用：在循环中break的作用是终止当前循环结构的后续所有操作，一但程序运行了break，循环也就终止了
+    2.continue
+    作用：在循环中continue的作用是跳过本次循环，开始下一次循环。continue执行之后本次循环的后续代码不再执行，直接进入下一次循环。
+    3.pass
+    作用：pass是没有任何意义的空语句，主要用来占位用，避免语法错误。
+</pre>
+
+
+
 
 
       
@@ -566,7 +649,7 @@ isinstance() 检测一个数据是否由指定的类型创建
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型"><span class="nav-number">1.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Number类型"><span class="nav-number">1.1.</span> <span class="nav-text">1.Number类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-String字符串类型"><span class="nav-number">1.2.</span> <span class="nav-text">2.String字符串类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-List列表类型"><span class="nav-number">1.3.</span> <span class="nav-text">3.List列表类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-元组类型"><span class="nav-number">1.4.</span> <span class="nav-text">4.元组类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Dict字典类型"><span class="nav-number">1.5.</span> <span class="nav-text">5.Dict字典类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Set集合类型"><span class="nav-number">1.6.</span> <span class="nav-text">6.Set集合类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型转换"><span class="nav-number">2.</span> <span class="nav-text">数据类型转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一-自动转换-隐式转换"><span class="nav-number">2.1.</span> <span class="nav-text">一.自动转换 (隐式转换)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二-强制转换-显式转换"><span class="nav-number">2.2.</span> <span class="nav-text">二.强制转换(显式转换)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运算和运算符"><span class="nav-number">3.</span> <span class="nav-text">运算和运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#算术运算"><span class="nav-number">3.1.</span> <span class="nav-text">算术运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关系运算-比较运算"><span class="nav-number">3.2.</span> <span class="nav-text">关系运算/比较运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#赋值运算"><span class="nav-number">3.3.</span> <span class="nav-text">赋值运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑运算"><span class="nav-number">3.4.</span> <span class="nav-text">逻辑运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#位运算"><span class="nav-number">3.5.</span> <span class="nav-text">位运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#成员运算"><span class="nav-number">3.6.</span> <span class="nav-text">成员运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#身份检测"><span class="nav-number">3.7.</span> <span class="nav-text">身份检测</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检测数据归属类型"><span class="nav-number">3.8.</span> <span class="nav-text">检测数据归属类型</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型"><span class="nav-number">1.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Number类型"><span class="nav-number">1.1.</span> <span class="nav-text">1.Number类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-String字符串类型"><span class="nav-number">1.2.</span> <span class="nav-text">2.String字符串类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-List列表类型"><span class="nav-number">1.3.</span> <span class="nav-text">3.List列表类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-元组类型"><span class="nav-number">1.4.</span> <span class="nav-text">4.元组类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Dict字典类型"><span class="nav-number">1.5.</span> <span class="nav-text">5.Dict字典类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Set集合类型"><span class="nav-number">1.6.</span> <span class="nav-text">6.Set集合类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型转换"><span class="nav-number">2.</span> <span class="nav-text">数据类型转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一-自动转换-隐式转换"><span class="nav-number">2.1.</span> <span class="nav-text">一.自动转换 (隐式转换)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二-强制转换-显式转换"><span class="nav-number">2.2.</span> <span class="nav-text">二.强制转换(显式转换)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运算和运算符"><span class="nav-number">3.</span> <span class="nav-text">运算和运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#算术运算"><span class="nav-number">3.1.</span> <span class="nav-text">算术运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关系运算-比较运算"><span class="nav-number">3.2.</span> <span class="nav-text">关系运算/比较运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#赋值运算"><span class="nav-number">3.3.</span> <span class="nav-text">赋值运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑运算"><span class="nav-number">3.4.</span> <span class="nav-text">逻辑运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#位运算"><span class="nav-number">3.5.</span> <span class="nav-text">位运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#成员运算"><span class="nav-number">3.6.</span> <span class="nav-text">成员运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#身份检测"><span class="nav-number">3.7.</span> <span class="nav-text">身份检测</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检测数据归属类型"><span class="nav-number">3.8.</span> <span class="nav-text">检测数据归属类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#流程控制"><span class="nav-number">4.</span> <span class="nav-text">流程控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-顺序结构"><span class="nav-number">4.1.</span> <span class="nav-text">1.顺序结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-分支-选择-结构"><span class="nav-number">4.2.</span> <span class="nav-text">2.分支(选择)结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-循环结构"><span class="nav-number">4.3.</span> <span class="nav-text">3.循环结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-流程控制语句"><span class="nav-number">4.4.</span> <span class="nav-text">4.流程控制语句</span></a></li></ol></li></ol></div>
             
 
           </div>

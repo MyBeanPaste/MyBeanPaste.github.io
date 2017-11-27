@@ -434,6 +434,89 @@ isinstance() 检测一个数据是否由指定的类型创建
     格式：isinstance(变量，检测的类型)
 </pre>
 
+<h2 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h2><h3 id="1-顺序结构"><a href="#1-顺序结构" class="headerlink" title="1.顺序结构"></a>1.顺序结构</h3><pre>
+顺序结构就是代码一种自上而下执行的结构，python的默认流程
+</pre>
+
+<h3 id="2-分支-选择-结构"><a href="#2-分支-选择-结构" class="headerlink" title="2.分支(选择)结构"></a>2.分支(选择)结构</h3><pre>
+分支结构一共分为4类，分别是 单项分支、双项分支、多项分支、巢状分支
+1.  单分支
+    格式：
+        if  1 < 4:
+            print('True')
+2. 双项分支
+    格式：
+        if  1 < 5:
+            print('True')
+        else:
+            print('False')
+3.多项分支
+    格式：
+        if 1 > 5:
+            pass
+        elif 条件:
+            pass
+        else:
+            pass
+4.巢状分支
+    if 条件：
+        pass
+        if 条件：
+            pass
+    else：
+        pass        
+</pre>
+
+<h3 id="3-循环结构"><a href="#3-循环结构" class="headerlink" title="3.循环结构"></a>3.循环结构</h3><pre>
+Python中循环结构分为两类，分别是while和for.....in
+1.while
+    格式1:(死循环)
+        a=1,b=3
+        while a < b:
+            print('1111111')
+            a += 1    
+    格式2:
+        a，b = 3，5
+        while a < b:
+            print('111111)
+            a += 1
+        else:
+            print('1111111')
+2.for .... in
+    for 变量 in 容器：用于遍历容器类的数据(字符串，列表，元组，字典，集合)
+    格式1:
+        user_list = ['小明','小红','小强','小军']
+        for val in user_list:
+             print(val)
+    格式2:
+        data = ('a','alibaba'),('b','baidu'),('c','changhong')
+        for k,v in data:
+            print(k,'======>',v)
+    使用格式2需注意以下几种格式遍历容器
+    [(),(),()]    列表中有元组
+    [[],[],[]]    列表中有列表
+    ((),(),())     元组中有元组
+    {(),(),()}    集合中有元组
+    格式3:
+        data = ('a','b','c','d')
+        for v in data:
+            print(v)
+        else:
+            print('11111111') 
+    循环结束时执行else区间代码
+</pre>
+
+<h3 id="4-流程控制语句"><a href="#4-流程控制语句" class="headerlink" title="4.流程控制语句"></a>4.流程控制语句</h3><pre>
+    1.break
+    作用：在循环中break的作用是终止当前循环结构的后续所有操作，一但程序运行了break，循环也就终止了
+    2.continue
+    作用：在循环中continue的作用是跳过本次循环，开始下一次循环。continue执行之后本次循环的后续代码不再执行，直接进入下一次循环。
+    3.pass
+    作用：pass是没有任何意义的空语句，主要用来占位用，避免语法错误。
+</pre>
+
+
+
 
 
           
