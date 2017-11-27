@@ -5,16 +5,16 @@
   
   <title>python学习笔记 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="##数据类型 ###1.Number类型 int整型、Float 浮点型、Bool布尔型、Complex复数型 ###2.String字符串类型 ###3.List列表类型   变量 = [值，值，值........]   ###4.元组类型  变量 = (值，值，值，.........)   ###5.Dict字典类">
+  <meta name="description" content="数据类型1.Number类型  int整型、Float 浮点型、Bool布尔型、Complex复数型  ### 2.String字符串类型 ### 3.List列表类型   变量 = [值，值，值........]   4.元组类型 变量 = (值，值，值，.........)   5.Dict字典类型 变量 = {键">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python学习笔记">
 <meta property="og:url" content="http://yoursite.com/2017/11/27/python/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="##数据类型 ###1.Number类型 int整型、Float 浮点型、Bool布尔型、Complex复数型 ###2.String字符串类型 ###3.List列表类型   变量 = [值，值，值........]   ###4.元组类型  变量 = (值，值，值，.........)   ###5.Dict字典类型  变量 = {键:值, 键:值,键:值........}   ###6.Se">
-<meta property="og:updated_time" content="2017-11-27T13:42:08.000Z">
+<meta property="og:description" content="数据类型1.Number类型  int整型、Float 浮点型、Bool布尔型、Complex复数型  ### 2.String字符串类型 ### 3.List列表类型   变量 = [值，值，值........]   4.元组类型 变量 = (值，值，值，.........)   5.Dict字典类型 变量 = {键:值, 键:值,键:值........}   6.Set集合类型 变量 = {值">
+<meta property="og:updated_time" content="2017-11-27T13:44:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python学习笔记">
-<meta name="twitter:description" content="##数据类型 ###1.Number类型 int整型、Float 浮点型、Bool布尔型、Complex复数型 ###2.String字符串类型 ###3.List列表类型   变量 = [值，值，值........]   ###4.元组类型  变量 = (值，值，值，.........)   ###5.Dict字典类型  变量 = {键:值, 键:值,键:值........}   ###6.Se">
+<meta name="twitter:description" content="数据类型1.Number类型  int整型、Float 浮点型、Bool布尔型、Complex复数型  ### 2.String字符串类型 ### 3.List列表类型   变量 = [值，值，值........]   4.元组类型 变量 = (值，值，值，.........)   5.Dict字典类型 变量 = {键:值, 键:值,键:值........}   6.Set集合类型 变量 = {值">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -54,7 +54,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -85,39 +85,34 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>##数据类型</p>
-<p>###1.Number类型<br> <pre><br>int整型、Float 浮点型、Bool布尔型、Complex复数型<br></pre></p>
-<p>###2.String字符串类型</p>
-<p>###3.List列表类型</p>
+        <h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><h3 id="1-Number类型"><a href="#1-Number类型" class="headerlink" title="1.Number类型"></a>1.Number类型</h3> <pre>
+int整型、Float 浮点型、Bool布尔型、Complex复数型
+</pre>
+### 2.String字符串类型
+### 3.List列表类型
 <pre>
  变量 = [值，值，值........]
 </pre>
 
-<p>###4.元组类型</p>
-<pre>
+<h3 id="4-元组类型"><a href="#4-元组类型" class="headerlink" title="4.元组类型"></a>4.元组类型</h3><pre>
 变量 = (值，值，值，.........)
 </pre>
 
-<p>###5.Dict字典类型</p>
-<pre>
+<h3 id="5-Dict字典类型"><a href="#5-Dict字典类型" class="headerlink" title="5.Dict字典类型"></a>5.Dict字典类型</h3><pre>
 变量 = {键:值, 键:值,键:值........}
 </pre>
 
-<p>###6.Set集合类型</p>
-<pre>
+<h3 id="6-Set集合类型"><a href="#6-Set集合类型" class="headerlink" title="6.Set集合类型"></a>6.Set集合类型</h3><pre>
 变量 = {值，值，值.........}
 </pre>
 
-<p>##数据类型转换</p>
-<p>###一.自动转换 (隐式转换)</p>
-<pre>
+<h2 id="数据类型转换"><a href="#数据类型转换" class="headerlink" title="数据类型转换"></a>数据类型转换</h2><h3 id="一-自动转换-隐式转换"><a href="#一-自动转换-隐式转换" class="headerlink" title="一.自动转换 (隐式转换)"></a>一.自动转换 (隐式转换)</h3><pre>
 1.自动类型转换不需要人工干预
 2.自动类型转换大多发生在运算或着判断过程中
 3.转换时向着更加精确的类型转换
 </pre>
 
-<p>###二.强制转换(显式转换)</p>
-<pre>
+<h3 id="二-强制转换-显式转换"><a href="#二-强制转换-显式转换" class="headerlink" title="二.强制转换(显式转换)"></a>二.强制转换(显式转换)</h3><pre>
 1.int()将其他类型转换为整形
     浮点类型转换之后，舍去小数部分
     布尔值转换之后 True ->1 False ->0
@@ -151,9 +146,7 @@
 9.dict()将其他类型转换为字典类型
 </pre>
 
-<p>##运算和运算符</p>
-<p>###算术运算</p>
-<pre>
+<h2 id="运算和运算符"><a href="#运算和运算符" class="headerlink" title="运算和运算符"></a>运算和运算符</h2><h3 id="算术运算"><a href="#算术运算" class="headerlink" title="算术运算"></a>算术运算</h3><pre>
 /        除法运算
 +       加法运算
 -       减法运算
@@ -163,8 +156,7 @@
 **      幂运算
 </pre>
 
-<p>###关系运算/比较运算</p>
-<pre>
+<h3 id="关系运算-比较运算"><a href="#关系运算-比较运算" class="headerlink" title="关系运算/比较运算"></a>关系运算/比较运算</h3><pre>
 <      小于运算
 >      大于运算
 ==      等于运算
@@ -172,16 +164,24 @@
 !=      不等于运算
 </=></pre>
 
-<p>###赋值运算<br> <pre><br>=      普通赋值运算<br>+=      加法赋值运算<br>-=      减法赋值运算<br><em>=      乘法赋值运算<br>/=       除法赋值运算<br>%=    取余赋值运算<br>//=    地板除赋值运算<br>*</em>=       幂赋值运算<br></pre></p>
-<p>###逻辑运算</p>
-<pre>
+<h3 id="赋值运算"><a href="#赋值运算" class="headerlink" title="赋值运算"></a>赋值运算</h3> <pre>
+=      普通赋值运算
++=      加法赋值运算
+-=      减法赋值运算
+*=      乘法赋值运算
+/=       除法赋值运算
+%=    取余赋值运算
+//=    地板除赋值运算
+**=       幂赋值运算
+</pre>
+
+<h3 id="逻辑运算"><a href="#逻辑运算" class="headerlink" title="逻辑运算"></a>逻辑运算</h3><pre>
 1. and逻辑与运算(有假则假；两边为真才是真)
 2.or逻辑或运算(有真则真；两边为假才是假)
 3.not逻辑非运算(真变假，假变真)
 </pre>
 
-<p>###位运算</p>
-<pre>
+<h3 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h3><pre>
 在二进制基础上进行的逻辑运算就是位运算
 &        按位与运算
 |        按位或运算
@@ -191,8 +191,7 @@
 \>>        右移运算    相当于地板除2运算
 </pre>
 
-<p>###成员运算</p>
-<pre>
+<h3 id="成员运算"><a href="#成员运算" class="headerlink" title="成员运算"></a>成员运算</h3><pre>
 检测一个数据是否在指定的容器(复合数据)当中
     检测数据1是否在数据2中
         格式：数据1 in 数据2
@@ -200,8 +199,7 @@
         格式：数据1 not in  数据2
 </pre>
 
-<p>###身份检测</p>
-<pre>
+<h3 id="身份检测"><a href="#身份检测" class="headerlink" title="身份检测"></a>身份检测</h3><pre>
 检测两个变量在内存中是否是同一个值
     检测两个变量在内存中是不是同一个值
         格式： 数据1 is 数据2
@@ -209,12 +207,19 @@
         格式：数据1 is not 数据2
 </pre>
 
-<p>###检测数据归属类型<br> <pre><br>type()<br>    格式：type(变量)<br>isinstance() 检测一个数据是否由指定的类型创建<br>    格式：isinstance(变量，检测的类型)<br></pre></p>
+<h3 id="检测数据归属类型"><a href="#检测数据归属类型" class="headerlink" title="检测数据归属类型"></a>检测数据归属类型</h3> <pre>
+type()   
+    格式：type(变量)
+isinstance() 检测一个数据是否由指定的类型创建
+    格式：isinstance(变量，检测的类型)
+</pre>
+
+
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/11/27/python/" data-id="cjai8thtz0001qjyrlnu0ykv2" class="article-share-link">Delen</a>
+      <a data-url="http://yoursite.com/2017/11/27/python/" data-id="cjai8wuuq0001ruyr534ksgsa" class="article-share-link">Share</a>
       
       
     </footer>
@@ -225,7 +230,7 @@
   
   
     <a href="/2017/11/27/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Ouder</strong>
+      <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">Hello World</div>
     </a>
   
@@ -248,7 +253,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archieven</h3>
+    <h3 class="widget-title">Archives</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li></ul>
     </div>
@@ -258,7 +263,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recente berichten</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         
