@@ -181,7 +181,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -191,7 +191,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -257,7 +257,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-11T19:04:39+08:00">
                 2017-03-11
@@ -717,13 +717,114 @@ title()
 功能：将每个单词首字母变为大写
 格式：字符串.title()
 返回值：新字符串
+
+upper()
+功能：将所有字母大写
+格式：字符串.upper()
+返回值：新字符串
+
+lower()
+功能：将所有字母变为小写
+格式：字符串.lower()
+返回值：新字符串
+
+swapcase()
+功能：大小写互换
+格式：字符串.swapcase()
+返回值：新字符串
+
+len()
+功能：计算字符串的长度
+格式：len(字符串)
+返回值：整型
+
+count()
+功能：计算指定字符串出现的次数
+格式：字符串.count(查找字符串，开始索引，结束索引)
+返回值：整数
+
+find()
+功能：查找指定字符串第一次出现的位置
+格式：字符串.find(查找字符串,开始索引，结束索引)
+返回值：整数，找不到返回 -1
+
+index()
+功能：查找指定字符串第一次出现的位置
+格式：字符串.index(查找字符串，开始索引，结束索引)
+返回值：整数 找不到抛出错误
+
+startswith()
+功能：检测指定的字符串是否以指定的字符串开头
+格式：字符串.startswith(查找字符串)
+返回值：布尔值
+
+endswith()
+功能：检测字符串是否以指定的字符串结尾
+格式：字符串.endswith(查找字符串)
+返回值：布尔值
+
+isupper()
+功能：检测一个字符串中的英文是否都是大写字母，符号不算
+格式：字符串.isupper()
+返回值：布尔值
+
+islower()
+功能：检测一个字符串中的英文是否都是小写字母，符号不算
+格式：字符串.islower()
+返回值：布尔值
+
+isalnum()
+功能：检测字符串是否由数字，字母和文字组成
+格式：字符串.isalnum()
+返回值：布尔值， 汉字当作普通字符处理，没有标点和特殊就是真，空字符串为false
+
+isalpha()
+功能：检测字符串是否是由字母和文字组成
+格式：字符串.isalpha()
+返回值：布尔值，汉子当作普通字母处理，字符串为false
+
+isdigit()
+功能：检测字符串是否由纯数字组成，十进制
+格式：字符串.isdigit()
+返回值：布尔值
+
+isnumeric()
+功能：检测字符串是否由纯数值字符串    数字整数
+格式：字符串.isnumeric()
+返回值：布尔值
+
+isdecimal()
+功能：检测字符串是否是纯数值字符串组成
+格式：字符串.isdecimal()
+返回值：布尔值
+
+isspace()
+功能：检测字符串是否由空白字符组成
+格式：字符串.isspace()
+返回值：布尔值
+
+isttile()
+功能：检测字符串是否符合title() 的结果
+格式：字符串.istitle()
+返回值：布尔值
+
+spilt()
+功能：将字符串按照指定字符串切割
+格式：字符串.split(切割指定字符串)
+返回值：列表
+
+splitlines()
+功能：将字符串按照换行位置进行切割操作
+格式：字符串.splitlines()
+返回值：列表
+
+join()
+功能：将列表中的内容按照指定字符连成一个字符串
+格式：连接字符串.join(列表)
+返回值：字符串
 </pre>
 
-
-
-
-
-
+<p><img src="file:///Users/uu/Desktop/屏幕快照 2017-11-08 下午2.08.51.png" alt=""></p>
 
           
         
@@ -806,7 +907,7 @@ title()
                 <a href="/archives/">
               
                   <span class="site-state-item-count">1</span>
-                  <span class="site-state-item-name">posts</span>
+                  <span class="site-state-item-name">Artikel</span>
                 </a>
               </div>
             
@@ -858,7 +959,7 @@ title()
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
