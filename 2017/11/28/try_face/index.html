@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="title：学习汇总笔记 date：2017-6-19  18:45:07悲观锁和乐观锁( 数据库) 1.悲观锁     每次去拿数据的时候都认为别人会修改，所以每次在拿数据的时候就会上锁，这样别人想拿这个数据就会阻塞知道它拿到锁。（传统的关系型数据库里边就用到了很多这种锁机制，比如行锁，表锁等，读锁等，都是在做操作之">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2017/11/28/try_face/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="title：学习汇总笔记 date：2017-6-19  18:45:07悲观锁和乐观锁( 数据库) 1.悲观锁     每次去拿数据的时候都认为别人会修改，所以每次在拿数据的时候就会上锁，这样别人想拿这个数据就会阻塞知道它拿到锁。（传统的关系型数据库里边就用到了很多这种锁机制，比如行锁，表锁等，读锁等，都是在做操作之前先上锁）  2.乐观锁     每次去拿数据的时候都认为被人不会修改，所以不">
+<meta property="og:updated_time" content="2017-11-29T11:37:01.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="title：学习汇总笔记 date：2017-6-19  18:45:07悲观锁和乐观锁( 数据库) 1.悲观锁     每次去拿数据的时候都认为别人会修改，所以每次在拿数据的时候就会上锁，这样别人想拿这个数据就会阻塞知道它拿到锁。（传统的关系型数据库里边就用到了很多这种锁机制，比如行锁，表锁等，读锁等，都是在做操作之前先上锁）  2.乐观锁     每次去拿数据的时候都认为被人不会修改，所以不">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/28/try_face/"/>
+
+
+
+
+
+  <title> | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/28/try_face/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-28T22:00:32+08:00">
+                2017-11-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<p>title：学习汇总笔记</p>
+<h2 id="date：2017-6-19-18-45-07"><a href="#date：2017-6-19-18-45-07" class="headerlink" title="date：2017-6-19  18:45:07"></a>date：2017-6-19  18:45:07</h2><h3 id="悲观锁和乐观锁-数据库"><a href="#悲观锁和乐观锁-数据库" class="headerlink" title="悲观锁和乐观锁( 数据库)"></a>悲观锁和乐观锁( 数据库)</h3><pre>
+1.悲观锁
+    每次去拿数据的时候都认为别人会修改，所以每次在拿数据的时候就会上锁，这样别人想拿这个数据就会阻塞知道它拿到锁。（传统的关系型数据库里边就用到了很多这种锁机制，比如行锁，表锁等，读锁等，都是在做操作之前先上锁）
+
+2.乐观锁
+    每次去拿数据的时候都认为被人不会修改，所以不会上锁，但是在更新的时候会判断一下在此期间别人有没有更新这个数据，可以使用版本号机制。乐观锁适用于多度的应用层，这样可以提高吞吐量
+
+3.区别
+    乐观锁适用于写较少的情况下，就是在冲突很少发生的时候，这样可以省去了开锁的开销，加大了整个系统的吞吐量，但是如果经常产生冲突，上层应用会不断的重试，这样反倒降低了性能，所以这种情况用悲观锁比较合适
+</pre>
+
+<h3 id="cookie和session机制原理与区别"><a href="#cookie和session机制原理与区别" class="headerlink" title="cookie和session机制原理与区别"></a>cookie和session机制原理与区别</h3><pre>
+1.什么是Cookie
+    由于HTTP是一种无状态的协议，服务器单从网络连接上无从知道客户身份。所以就给客户端们颁发一个通行证，每人一个，无论谁访问都必须携带自己的通行证。这样服务器就能从通行证上确认客户身份了。
+
+2.Cookie机制原理
+    Cookie通过在客户端记录信息确定用户身份
+    一个用户的所有请求操作都应该属于同一个会话，，而web应用程序是使用HTTP协议传输数据。HTTP协议是无状态的协议，一旦数据交换完毕，客户端与服务器端的连接就会关闭，再次交换数据需要建立新的连接，这就意味着服务器无法从连接上跟踪会话，所有采用cookie跟踪会话来弥补HTTP协议无状态的不足
+
+3.什么是session
+    Session是另一种记录客户状态的机制，不同的是Cookie保存在客户端浏览器中，而Session保存在服务器上。客户端浏览器访问服务器的时候，服务器把客户端信息以某种形式记录在服务器。
+
+4.Session机制原理
+    Session通过服务器端记录信息确定用户身份
+</pre>
+
+<h3 id="计算机组成原理底层机制"><a href="#计算机组成原理底层机制" class="headerlink" title="计算机组成原理底层机制"></a>计算机组成原理底层机制</h3><pre>
+</pre>
+
+<h3 id="http实现原理是什么"><a href="#http实现原理是什么" class="headerlink" title="http实现原理是什么"></a>http实现原理是什么</h3> <pre>
+基于HTTP协议的客户/服务器模式的信息交换过程，分为四个过程：建立连接、发送请求信息、发生响应信息、关闭连接
+HTTP的工作过程：
+    地址解析：需要域名系统DNS解析域名，得到主机IP地址
+    封装HTTP请求数据包：把以上部分结合本机自己的信息，封装成一个HTTP请求数据包
+    封装成TCP包，建立TCP连接(TCP的三次握手)：web浏览器首先通过网络和服务器建立连接，该连接是通过TCP来完成
+    客户机发送请求命令：建立连接后，客户机发送一个请求给服务器
+    服务器响应：服务器接到请求后，给予相应的响应信息，格式为一个状态行
+    服务器关闭TCP连接：节约连接所需要的时间和节约网络带宽
+</pre>
+
+<h3 id="TCP-IP协议实现机制"><a href="#TCP-IP协议实现机制" class="headerlink" title="TCP/ IP协议实现机制"></a>TCP/ IP协议实现机制</h3><pre>
+三次握手：建立TCP连接，是指建立一个TCP连接，需要客户端和服务端总共发送3个包以确认连接的建立
+四次挥手：终止TCP连接，就是指断开一个TCP连接时，需要客户端和服务端总共发送4个包以确认连接的断开
+</pre>
+
+<h3 id="python与C-区别"><a href="#python与C-区别" class="headerlink" title="python与C++区别"></a>python与C++区别</h3><pre>
+python：是一种解释性语言，不需要经过编译，很方便快捷
+C++：是一种编译性语言，运行效率高，安全稳定
+</pre>
+
+<h3 id="C-编译快的原因"><a href="#C-编译快的原因" class="headerlink" title="C++编译快的原因"></a>C++编译快的原因</h3> <pre>
+解释性语言不实际生产可执行代码
+编译型语言生成的直接就是计算机可识别的二进制代码
+</pre>
+
+
+<h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><pre>
+原理：临近的数字两两进行比较，按照从小到大或从大到小的顺序交换，这样最大或最小的数字被交换到了最后一位。
+</pre>
+
+<h3 id="多表查询"><a href="#多表查询" class="headerlink" title="多表查询"></a>多表查询</h3> <pre>
+</pre>
+
+<h3 id="计算机网络模型有哪几层"><a href="#计算机网络模型有哪几层" class="headerlink" title="计算机网络模型有哪几层"></a>计算机网络模型有哪几层</h3><pre>
+四层模型：应用层
+           传输层[会话层，表示层]
+           网络层
+           物理层[数据链路层]
+</pre>
+
+<h3 id="什么是进程，线程，协程"><a href="#什么是进程，线程，协程" class="headerlink" title="什么是进程，线程，协程"></a>什么是进程，线程，协程</h3><pre>
+进程：进程是系统进行资源分配和调度的一个独立单位
+线程：是进程的一个实体，是CPU调度和分派的基本单位，它是比进程更新的能独立运行的基本单位
+协程：是一种用户态的轻量级线程，协程的调度完全由用户控制
+
+进程和线程比较：
+    地址空间：线程是进程内的一个执行单元，进程内至少有一个线程，它们共享进程的地址空间，而进程有自己的独立的地址空间
+    资源拥有：进程是资源分配和拥有的单位，同一个进程内的线程共享进程的资源
+    线程是处理调度器的基本单位，但进程不是
+    二者均可并发
+
+协程和线程比较：
+    一个线程是可以有多个协程，一个进程也可以单独拥有多个协程，这样python中则能使用多核cpu
+    线程进程都是同步机制，而协程则是异步
+    协程能保留上一次调用时的状态，每次过程重入时，就相当于进入上一次调用的状态
+</pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/11/python/" rel="next" title="python基础学习笔记">
+                <i class="fa fa-chevron-left"></i> python基础学习笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#date：2017-6-19-18-45-07"><span class="nav-number">1.</span> <span class="nav-text">date：2017-6-19  18:45:07</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#悲观锁和乐观锁-数据库"><span class="nav-number">1.1.</span> <span class="nav-text">悲观锁和乐观锁( 数据库)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cookie和session机制原理与区别"><span class="nav-number">1.2.</span> <span class="nav-text">cookie和session机制原理与区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算机组成原理底层机制"><span class="nav-number">1.3.</span> <span class="nav-text">计算机组成原理底层机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http实现原理是什么"><span class="nav-number">1.4.</span> <span class="nav-text">http实现原理是什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP-IP协议实现机制"><span class="nav-number">1.5.</span> <span class="nav-text">TCP/ IP协议实现机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python与C-区别"><span class="nav-number">1.6.</span> <span class="nav-text">python与C++区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-编译快的原因"><span class="nav-number">1.7.</span> <span class="nav-text">C++编译快的原因</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#冒泡排序"><span class="nav-number">1.8.</span> <span class="nav-text">冒泡排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多表查询"><span class="nav-number">1.9.</span> <span class="nav-text">多表查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算机网络模型有哪几层"><span class="nav-number">1.10.</span> <span class="nav-text">计算机网络模型有哪几层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是进程，线程，协程"><span class="nav-number">1.11.</span> <span class="nav-text">什么是进程，线程，协程</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
