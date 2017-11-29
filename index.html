@@ -325,9 +325,6 @@
     Session通过服务器端记录信息确定用户身份
 </pre>
 
-<h3 id="计算机组成原理底层机制"><a href="#计算机组成原理底层机制" class="headerlink" title="计算机组成原理底层机制"></a>计算机组成原理底层机制</h3><pre>
-</pre>
-
 <h3 id="http实现原理是什么"><a href="#http实现原理是什么" class="headerlink" title="http实现原理是什么"></a>http实现原理是什么</h3> <pre>
 基于HTTP协议的客户/服务器模式的信息交换过程，分为四个过程：建立连接、发送请求信息、发生响应信息、关闭连接
 HTTP的工作过程：
@@ -354,12 +351,8 @@ C++：是一种编译性语言，运行效率高，安全稳定
 编译型语言生成的直接就是计算机可识别的二进制代码
 </pre>
 
-
 <h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><pre>
 原理：临近的数字两两进行比较，按照从小到大或从大到小的顺序交换，这样最大或最小的数字被交换到了最后一位。
-</pre>
-
-<h3 id="多表查询"><a href="#多表查询" class="headerlink" title="多表查询"></a>多表查询</h3> <pre>
 </pre>
 
 <h3 id="计算机网络模型有哪几层"><a href="#计算机网络模型有哪几层" class="headerlink" title="计算机网络模型有哪几层"></a>计算机网络模型有哪几层</h3><pre>
@@ -384,6 +377,278 @@ C++：是一种编译性语言，运行效率高，安全稳定
     一个线程是可以有多个协程，一个进程也可以单独拥有多个协程，这样python中则能使用多核cpu
     线程进程都是同步机制，而协程则是异步
     协程能保留上一次调用时的状态，每次过程重入时，就相当于进入上一次调用的状态
+</pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/21/Linux/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/05/21/Linux/" itemprop="url">Linux学习笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-21T20:04:39+08:00">
+                2017-05-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Linux分区"><a href="#Linux分区" class="headerlink" title="Linux分区"></a>Linux分区</h2><h3 id="linux-分区表示"><a href="#linux-分区表示" class="headerlink" title="linux 分区表示"></a>linux 分区表示</h3><pre>
+分区类型：
+    主分区：最多只能分四个
+    扩展分区：扩展分区最多1个，扩展不能格式化，也不能写入数据，只能包含逻辑区。扩展分区加主分区最多只有4个
+    逻辑分区：可以有多个存放数据
+分区表示：
+    /dev/hdal        hd:IDE硬盘         a：第一块硬盘
+    ／dev/sda1        sd：SCSI，SATA硬盘
+    ／dev/sdc5        第三块scsi硬盘    第一个逻辑分区
+必须分区：
+    ／        根分区必须单独分，越大越好    C:分区
+    swap    交换分区        2倍        不要大于2GB
+常用分区：
+    ／boot    启动分区    200MB
+</pre>
+
+<h2 id="Linux常用命令"><a href="#Linux常用命令" class="headerlink" title="Linux常用命令"></a>Linux常用命令</h2><h3 id="显示目录命令"><a href="#显示目录命令" class="headerlink" title="显示目录命令"></a>显示目录命令</h3><pre>
+ls                显示目录下的内容list
+ls -l                长格式显示
+ls -a            显示所有文件(包含隐藏文件)
+ls -al            长格式显示所有文件
+ls -h            文件大小显示为常见单位
+ls -d            显示目录本身，而不是里面的子文件
+ls -l    文件名        显示指定文件名的目录
+</pre>
+
+<h3 id="目录操作命令"><a href="#目录操作命令" class="headerlink" title="目录操作命令"></a>目录操作命令</h3><pre>
+cd                切换所在目录
+cd ～            进入当前用户的家目录
+cd -            进入上次目录
+cd ..                进入上一级目录
+cd .                进入当前目录
+pwd                显示当前所在目录
+mkdir            建立目录
+mkdir -p        递归建立目录
+rmdir 目录        只能删除空目录
+rm    文件名            删除文件
+rm -rf 目录            删除文件和目录
+    -r                递归，删除目录
+    -f                强制
+</pre>
+
+<h3 id="Linux常见目录"><a href="#Linux常见目录" class="headerlink" title="Linux常见目录"></a>Linux常见目录</h3> <pre>
+／                根目录
+/bin                命令保存目录(普通用户就可以读取的命令)
+/boot            启动目录，启动相关文件
+/dev            设备文件保存目录
+/dev/sr0        光驱设备    
+/dev/cdrom        光驱设备
+/dev/sda        硬盘设备
+/etc                配置文件保存目录
+/home            普通用户的家目录
+/lib                系统库保存目录
+/mnt            系统挂载目录
+/media            挂载目录
+/root            超级用户的家目录
+/tmp            临时目录
+/sbin            命令保存目录(超级用户才能使用)
+/proc            直接写入内存
+/sys            
+/usr             系统软件资源目录
+/usr/bin            系统命令(普通用户)
+/usr/sbin         系统命令(超级用户)
+/var                系统相关文档内容
+/var/log            系统日志位置
+/var/spool/mail        系统默认邮箱位置
+/var/lib            默认安装库文件目录
+</pre>
+
+<h3 id="文件操作命令"><a href="#文件操作命令" class="headerlink" title="文件操作命令"></a>文件操作命令</h3><pre>
+touch 文件名            创建空文件
+cat    文件名                查看文件内容(从头到尾)
+    -n                    列出行号
+more 文件名            分屏显示文件内容
+    空格            向下翻页
+    b                向上翻页
+    q                退出
+head 文件名            显示文件头
+head -n  行数  文件名        指定显示文件头几行
+ls  -s  源文件  目标文件        链接文件(文件名都必须写绝对路径)
+ctrl + c                        强制终止
+ctr + l                        清屏
+</pre>
+
+<h3 id="文件和目录都能操作的命令"><a href="#文件和目录都能操作的命令" class="headerlink" title="文件和目录都能操作的命令"></a>文件和目录都能操作的命令</h3><pre>
+rm                        删除文件或目录
+cp 源文件 目标位置        复制文件或目录(可改名复制)
+    -r                    复制目录
+    -p                    连带文件的属性复制
+    -d                    若源文件是链接文件，则复制链接属性
+    -a                    在保留原文件属性的前提下复制文件
+mv 源文件 目标位置        剪切或改名
+</pre>
+
+<h3 id="帮助命令"><a href="#帮助命令" class="headerlink" title="帮助命令"></a>帮助命令</h3><pre>
+man      命令名                查看命令的帮助
+命令 --help                查看命令的常见选项
+</pre>
+
+<h3 id="查找命令"><a href="#查找命令" class="headerlink" title="查找命令"></a>查找命令</h3><pre>
+whereis 命令名                        查找命令的命令，同时看到帮助文档位置
+
+find     查找位置 -name 文件名             按照文件名查找
+                 -iname                不区分大小写
+                -user 用户名            按照属主用户名查找文件
+                -group 组名            按照属组组名查找文件
+                -nouser                找到没有属主的文件
+                -size    50K            按照文件大小
+                -type    类型        按照文件类型查找(f:普通d:目录l:链接)
+                -perm    644            按照权限查找
+
+grep “字符串”    文件名                查找符合条件的字符串行
+grep -i “字符串”     文件名                忽略大小写
+     -v                                反向选择
+
+命令1  |  命令2                        命令1的执行结果，作为命令2的执行条件
+</pre>
+
+<h2 id="Linux权限管理"><a href="#Linux权限管理" class="headerlink" title="Linux权限管理"></a>Linux权限管理</h2><h3 id="权限位"><a href="#权限位" class="headerlink" title="权限位"></a>权限位</h3><pre>
+ 权限位是是十位 
+第一位：代表文件类型
+-            普通文件
+d            目录文件
+l            链接文件
+r            读        4
+w            写        2
+x            执行    1
+其他九位：
+    属主权限u    属主权限g    其他人权限o
+</pre>
+
+<h3 id="修改权限"><a href="#修改权限" class="headerlink" title="修改权限"></a>修改权限</h3> <pre>
+chmod    u+x  文件名或目录名        给文件或目录的属主加上执行权限
+chmod    u-x  文件名或目录名        给文件或目录的属主减去执行权限
+chmod   u=rwx 文件名或目录名        给文件或目录添加读写执行权限
+chmod    755        文件名或目录名
+</pre>
+
+<h3 id="权限含义"><a href="#权限含义" class="headerlink" title="权限含义"></a>权限含义</h3><pre>
+1.权限对文件的含义
+r : 读取文件内容        cat      more    head    tail
+w:  编辑、新增、修改文件内容        vi    echo（不包含删除文件）
+x：可执行
+
+2.权限对目录的含义
+r：可以查询目录下文件名        ls
+w：具有修改目录结构的权限    touch    rm    mv    cp
+x：可以进入目录                cd
+</pre>
+
+<h3 id="属主和属组命令"><a href="#属主和属组命令" class="headerlink" title="属主和属组命令"></a>属主和属组命令</h3><p><pre><br>chown    用户   文件名或目录名            改变文件属主<br>chown    user1:user2    文件名或目录名        改变属主同时该变属组<br>useradd        用户名                        添加用户<br>passwd        用户名                        设定用户密码</pre></p>
+<pre>
+
 </pre>
           
         
@@ -1113,7 +1378,7 @@ join()
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">Artikel</span>
                 </a>
               </div>

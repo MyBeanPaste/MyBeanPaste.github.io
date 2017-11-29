@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Linux分区linux 分区表示 分区类型：     主分区：最多只能分四个     扩展分区：扩展分区最多1个，扩展不能格式化，也不能写入数据，只能包含逻辑区。扩展分区加主分区最多只有4个     逻辑分区：可以有多个存放数据 分区表示：     /dev/hdal        hd:IDE硬盘         ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux学习笔记">
+<meta property="og:url" content="http://yoursite.com/2017/05/21/Linux/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Linux分区linux 分区表示 分区类型：     主分区：最多只能分四个     扩展分区：扩展分区最多1个，扩展不能格式化，也不能写入数据，只能包含逻辑区。扩展分区加主分区最多只有4个     逻辑分区：可以有多个存放数据 分区表示：     /dev/hdal        hd:IDE硬盘         a：第一块硬盘     ／dev/sda1        sd：SCSI，SAT">
+<meta property="og:updated_time" content="2017-11-29T14:47:33.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux学习笔记">
+<meta name="twitter:description" content="Linux分区linux 分区表示 分区类型：     主分区：最多只能分四个     扩展分区：扩展分区最多1个，扩展不能格式化，也不能写入数据，只能包含逻辑区。扩展分区加主分区最多只有4个     逻辑分区：可以有多个存放数据 分区表示：     /dev/hdal        hd:IDE硬盘         a：第一块硬盘     ／dev/sda1        sd：SCSI，SAT">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/05/21/Linux/"/>
+
+
+
+
+
+  <title>Linux学习笔记 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/21/Linux/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Linux学习笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-21T20:04:39+08:00">
+                2017-05-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Linux分区"><a href="#Linux分区" class="headerlink" title="Linux分区"></a>Linux分区</h2><h3 id="linux-分区表示"><a href="#linux-分区表示" class="headerlink" title="linux 分区表示"></a>linux 分区表示</h3><pre>
+分区类型：
+    主分区：最多只能分四个
+    扩展分区：扩展分区最多1个，扩展不能格式化，也不能写入数据，只能包含逻辑区。扩展分区加主分区最多只有4个
+    逻辑分区：可以有多个存放数据
+分区表示：
+    /dev/hdal        hd:IDE硬盘         a：第一块硬盘
+    ／dev/sda1        sd：SCSI，SATA硬盘
+    ／dev/sdc5        第三块scsi硬盘    第一个逻辑分区
+必须分区：
+    ／        根分区必须单独分，越大越好    C:分区
+    swap    交换分区        2倍        不要大于2GB
+常用分区：
+    ／boot    启动分区    200MB
+</pre>
+
+<h2 id="Linux常用命令"><a href="#Linux常用命令" class="headerlink" title="Linux常用命令"></a>Linux常用命令</h2><h3 id="显示目录命令"><a href="#显示目录命令" class="headerlink" title="显示目录命令"></a>显示目录命令</h3><pre>
+ls                显示目录下的内容list
+ls -l                长格式显示
+ls -a            显示所有文件(包含隐藏文件)
+ls -al            长格式显示所有文件
+ls -h            文件大小显示为常见单位
+ls -d            显示目录本身，而不是里面的子文件
+ls -l    文件名        显示指定文件名的目录
+</pre>
+
+<h3 id="目录操作命令"><a href="#目录操作命令" class="headerlink" title="目录操作命令"></a>目录操作命令</h3><pre>
+cd                切换所在目录
+cd ～            进入当前用户的家目录
+cd -            进入上次目录
+cd ..                进入上一级目录
+cd .                进入当前目录
+pwd                显示当前所在目录
+mkdir            建立目录
+mkdir -p        递归建立目录
+rmdir 目录        只能删除空目录
+rm    文件名            删除文件
+rm -rf 目录            删除文件和目录
+    -r                递归，删除目录
+    -f                强制
+</pre>
+
+<h3 id="Linux常见目录"><a href="#Linux常见目录" class="headerlink" title="Linux常见目录"></a>Linux常见目录</h3> <pre>
+／                根目录
+/bin                命令保存目录(普通用户就可以读取的命令)
+/boot            启动目录，启动相关文件
+/dev            设备文件保存目录
+/dev/sr0        光驱设备    
+/dev/cdrom        光驱设备
+/dev/sda        硬盘设备
+/etc                配置文件保存目录
+/home            普通用户的家目录
+/lib                系统库保存目录
+/mnt            系统挂载目录
+/media            挂载目录
+/root            超级用户的家目录
+/tmp            临时目录
+/sbin            命令保存目录(超级用户才能使用)
+/proc            直接写入内存
+/sys            
+/usr             系统软件资源目录
+/usr/bin            系统命令(普通用户)
+/usr/sbin         系统命令(超级用户)
+/var                系统相关文档内容
+/var/log            系统日志位置
+/var/spool/mail        系统默认邮箱位置
+/var/lib            默认安装库文件目录
+</pre>
+
+<h3 id="文件操作命令"><a href="#文件操作命令" class="headerlink" title="文件操作命令"></a>文件操作命令</h3><pre>
+touch 文件名            创建空文件
+cat    文件名                查看文件内容(从头到尾)
+    -n                    列出行号
+more 文件名            分屏显示文件内容
+    空格            向下翻页
+    b                向上翻页
+    q                退出
+head 文件名            显示文件头
+head -n  行数  文件名        指定显示文件头几行
+ls  -s  源文件  目标文件        链接文件(文件名都必须写绝对路径)
+ctrl + c                        强制终止
+ctr + l                        清屏
+</pre>
+
+<h3 id="文件和目录都能操作的命令"><a href="#文件和目录都能操作的命令" class="headerlink" title="文件和目录都能操作的命令"></a>文件和目录都能操作的命令</h3><pre>
+rm                        删除文件或目录
+cp 源文件 目标位置        复制文件或目录(可改名复制)
+    -r                    复制目录
+    -p                    连带文件的属性复制
+    -d                    若源文件是链接文件，则复制链接属性
+    -a                    在保留原文件属性的前提下复制文件
+mv 源文件 目标位置        剪切或改名
+</pre>
+
+<h3 id="帮助命令"><a href="#帮助命令" class="headerlink" title="帮助命令"></a>帮助命令</h3><pre>
+man      命令名                查看命令的帮助
+命令 --help                查看命令的常见选项
+</pre>
+
+<h3 id="查找命令"><a href="#查找命令" class="headerlink" title="查找命令"></a>查找命令</h3><pre>
+whereis 命令名                        查找命令的命令，同时看到帮助文档位置
+
+find     查找位置 -name 文件名             按照文件名查找
+                 -iname                不区分大小写
+                -user 用户名            按照属主用户名查找文件
+                -group 组名            按照属组组名查找文件
+                -nouser                找到没有属主的文件
+                -size    50K            按照文件大小
+                -type    类型        按照文件类型查找(f:普通d:目录l:链接)
+                -perm    644            按照权限查找
+
+grep “字符串”    文件名                查找符合条件的字符串行
+grep -i “字符串”     文件名                忽略大小写
+     -v                                反向选择
+
+命令1  |  命令2                        命令1的执行结果，作为命令2的执行条件
+</pre>
+
+<h2 id="Linux权限管理"><a href="#Linux权限管理" class="headerlink" title="Linux权限管理"></a>Linux权限管理</h2><h3 id="权限位"><a href="#权限位" class="headerlink" title="权限位"></a>权限位</h3><pre>
+ 权限位是是十位 
+第一位：代表文件类型
+-            普通文件
+d            目录文件
+l            链接文件
+r            读        4
+w            写        2
+x            执行    1
+其他九位：
+    属主权限u    属主权限g    其他人权限o
+</pre>
+
+<h3 id="修改权限"><a href="#修改权限" class="headerlink" title="修改权限"></a>修改权限</h3> <pre>
+chmod    u+x  文件名或目录名        给文件或目录的属主加上执行权限
+chmod    u-x  文件名或目录名        给文件或目录的属主减去执行权限
+chmod   u=rwx 文件名或目录名        给文件或目录添加读写执行权限
+chmod    755        文件名或目录名
+</pre>
+
+<h3 id="权限含义"><a href="#权限含义" class="headerlink" title="权限含义"></a>权限含义</h3><pre>
+1.权限对文件的含义
+r : 读取文件内容        cat      more    head    tail
+w:  编辑、新增、修改文件内容        vi    echo（不包含删除文件）
+x：可执行
+
+2.权限对目录的含义
+r：可以查询目录下文件名        ls
+w：具有修改目录结构的权限    touch    rm    mv    cp
+x：可以进入目录                cd
+</pre>
+
+<h3 id="属主和属组命令"><a href="#属主和属组命令" class="headerlink" title="属主和属组命令"></a>属主和属组命令</h3><p><pre><br>chown    用户   文件名或目录名            改变文件属主<br>chown    user1:user2    文件名或目录名        改变属主同时该变属组<br>useradd        用户名                        添加用户<br>passwd        用户名                        设定用户密码</pre></p>
+<pre>
+
+</pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/11/python/" rel="next" title="python基础学习笔记">
+                <i class="fa fa-chevron-left"></i> python基础学习笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/28/try_face/" rel="prev" title="学习汇总笔记">
+                学习汇总笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">Artikel</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux分区"><span class="nav-number">1.</span> <span class="nav-text">Linux分区</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#linux-分区表示"><span class="nav-number">1.1.</span> <span class="nav-text">linux 分区表示</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux常用命令"><span class="nav-number">2.</span> <span class="nav-text">Linux常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#显示目录命令"><span class="nav-number">2.1.</span> <span class="nav-text">显示目录命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目录操作命令"><span class="nav-number">2.2.</span> <span class="nav-text">目录操作命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux常见目录"><span class="nav-number">2.3.</span> <span class="nav-text">Linux常见目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件操作命令"><span class="nav-number">2.4.</span> <span class="nav-text">文件操作命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件和目录都能操作的命令"><span class="nav-number">2.5.</span> <span class="nav-text">文件和目录都能操作的命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#帮助命令"><span class="nav-number">2.6.</span> <span class="nav-text">帮助命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查找命令"><span class="nav-number">2.7.</span> <span class="nav-text">查找命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux权限管理"><span class="nav-number">3.</span> <span class="nav-text">Linux权限管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#权限位"><span class="nav-number">3.1.</span> <span class="nav-text">权限位</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改权限"><span class="nav-number">3.2.</span> <span class="nav-text">修改权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#权限含义"><span class="nav-number">3.3.</span> <span class="nav-text">权限含义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#属主和属组命令"><span class="nav-number">3.4.</span> <span class="nav-text">属主和属组命令</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
